@@ -10,7 +10,7 @@ Route::get('/planetss', function () {
     return ["Uranus", "Jupiter", "Mars", "Aarde", "Saturnus", "Pluto", "Neptunus", "Venus"];
 });
 
-Route::get('/planets', function () {
+Route::get('/planets/{planet?}', function ($planetName = null) {
     $planets = [
         [
             'name' => 'Mars',
@@ -29,6 +29,15 @@ Route::get('/planets', function () {
             'description' => 'Jupiter is a gas giant and doesn\'t have a solid surface, but it may have a solid inner core about the size of Earth.'
         ],
     ];
-    
-    return view('planets', ['planets' => $planets]);
+
+    // Convert the array to a collection for easier filtering
+    $planetsCollection = collect($planets);
+
+    if ($planetName) {
+        $planetsCollection = $planetsCollection->filter(function ($planet) use ($planetName) {
+            return strtolower($planet['name']) === strtolower($planetName);
+        });
+    }
+
+    return view('planets', ['planets' => $planetsCollection->all()]);
 });
