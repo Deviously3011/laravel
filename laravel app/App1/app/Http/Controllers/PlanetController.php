@@ -15,11 +15,11 @@ class PlanetController extends Controller
             'name' => 'Venus',
             'description' => 'Venus is the second planet from the Sun...'
         ],
-        // ... (Voeg de andere planeten hier toe)
+        // ... (Add the other planets here)
     ];
 
     public function index() {
-        return view('planets', ['planets' => $this->planets]);
+        return view('planets.index', ['planets' => $this->planets]);
     }
 
     public function show($planetName = null) {
@@ -31,6 +31,6 @@ class PlanetController extends Controller
             });
         }
 
-        return view('planets', ['planets' => $planetsCollection->all()]);
+        return view('planets.show', ['planets' => $planetsCollection->all()]);
     }
 }

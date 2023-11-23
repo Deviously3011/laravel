@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanetController;
+// routes/web.php
+
+Route::get('/planets', [PlanetController::class, 'getAllPlanets']);
+Route::get('/planets/{planet}', [PlanetController::class, 'showPlanet']);
 
 Route::get('/', function () {
     return view('welcome');
