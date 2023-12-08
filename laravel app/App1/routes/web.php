@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanetController;
 
 // Define your routes
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -14,6 +13,7 @@ Route::get('/planetss', function () {
 });
 
 // Use the PlanetController for the planets routes
-
 Route::get('/planets', [PlanetController::class, 'index']);
 Route::get('/planets/{planet}', [PlanetController::class, 'show']);
+
+
