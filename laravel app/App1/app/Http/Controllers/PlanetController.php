@@ -12,7 +12,7 @@ class PlanetController extends Controller
     return view('planets.index', ['planets' => $planets]);
 }
 
-public function show($planetName)
+public function sahow($planetName)
 {
     $planet = Planet::where('name', $planetName)->first();
     return view('planets.show', ['planet' => $planet]);
