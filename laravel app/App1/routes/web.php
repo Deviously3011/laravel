@@ -15,5 +15,6 @@ Route::get('/planetss', function () {
 // Use the PlanetController for the planets routes
 Route::get('/planets', [PlanetController::class, 'index']);
 Route::get('/planets/{planet}', [PlanetController::class, 'show']);
+Route::get('/pivot-data', 'PivotController@showPivotData');
 
 
